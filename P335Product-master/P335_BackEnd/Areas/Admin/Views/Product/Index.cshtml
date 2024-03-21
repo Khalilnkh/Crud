@@ -1,0 +1,26 @@
+﻿@model ProductIndexVM
+
+<h1>Product page</h1>
+<br />
+
+<a asp-action="Add" class="btn btn-success">Add</a>
+<br />
+<br />
+
+<div class="row">
+    @foreach (var product in Model.Products)
+    {
+        <div class="col-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="~/img/featured/@product.ProductImages?.FirstOrDefault()?.Image?.Url">
+                <div class="card-body">
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="card-text">Price: @product.Price</p>
+                    <a asp-action="Edit" asp-route-id="@product.Id" class="btn btn-warning">Edit</a>
+                    @* <a asp-action="Detail" asp-route-id="@product.Id" class="btn btn-warning">Detail</a> *@
+                    <a asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
